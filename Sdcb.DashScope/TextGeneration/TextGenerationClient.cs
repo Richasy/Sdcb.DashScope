@@ -61,7 +61,7 @@ public class TextGenerationClient
     /// <see cref="ResponseWrapper{TOutput, TUsage}"/> object with the <see cref="ChatOutput"/> as the result of the interaction and 
     /// <see cref="ChatTokenUsage"/> that provides metadata about the token usage for the conversation.
     /// </returns>
-    public async Task<ResponseWrapper<ChatOutput, ChatTokenUsage>> Chat(string model, IReadOnlyList<ChatMessage> messages, ChatParameters? parameters = null, CancellationToken cancellationToken = default)
+    public async Task<ResponseWrapper<ChatOutput, ChatTokenUsage>> ChatAsync(string model, IReadOnlyList<ChatMessage> messages, ChatParameters? parameters = null, CancellationToken cancellationToken = default)
     {
         HttpRequestMessage httpRequest = new(HttpMethod.Post, @"https://dashscope.aliyuncs.com/api/v1/services/aigc/text-generation/generation")
         {
@@ -112,7 +112,7 @@ public class TextGenerationClient
     /// Streamed <see cref="ResponseWrapper{TOutput, TUsage}"/> object with the <see cref="ChatOutput"/> as the result of the interaction and 
     /// <see cref="ChatTokenUsage"/> that provides metadata about the token usage for the conversation.
     /// </returns>
-    public async IAsyncEnumerable<ResponseWrapper<ChatOutput, ChatTokenUsage>> ChatStreamed(string model, 
+    public async IAsyncEnumerable<ResponseWrapper<ChatOutput, ChatTokenUsage>> ChatStreamedAsync(string model, 
         IReadOnlyList<ChatMessage> messages, 
         ChatParameters? parameters = null, 
         [EnumeratorCancellation] CancellationToken cancellationToken = default)
@@ -170,7 +170,7 @@ public class TextGenerationClient
     /// Streamed <see cref="ResponseWrapper{TOutput, TUsage}"/> object with the <see cref="ChatOutput"/> as the result of the interaction and 
     /// <see cref="ChatTokenUsage"/> that provides metadata about the token usage for the conversation.
     /// </returns>
-    public async IAsyncEnumerable<ResponseWrapper<string, ChatTokenUsage>> ChatVLStreamed(string model,
+    public async IAsyncEnumerable<ResponseWrapper<string, ChatTokenUsage>> ChatVLStreamedAsync(string model,
         IReadOnlyList<ChatVLMessage> messages,
         ChatParameters? parameters = null,
         [EnumeratorCancellation] CancellationToken cancellationToken = default)
